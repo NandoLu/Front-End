@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espaço de Foco Digital</title>
+    <link rel="stylesheet" href="./src/CSS/styles.css">
+</head>
+<body>
+    <aside id="lateral-bar">
+        <nav>
+            <ul id="links">
+                <li><a href="">Home</a></li>
+                <li><a href="">Ferramentas</a></li>
+                <li><a href="">Sites Favoritos</a></li>
+                <li><a href="">Leitura</a></li>
+                <li><a href="">Chat-GPT</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        
+        <div id="box">
+            <h1 class="title">Home</h1> <!-- Agora acima do form -->
+            <form action="">
+                <textarea id="note" rows="1" cols="30" placeholder="Escreva aqui suas anotações."></textarea>
+                <input id="btn-save" type="button" value="salvar">
+                <title>Cronômetro Pomodoro</title>
+                <style>
+                    #tempo { font-size: 2em; }
+                </style>
+            </head>
+            <body>
+                <div id="tempo">00:00</div>
+                <button id="botaoStart">Start</button>
+                <button id="botaoPause">Pause</button>
+                <button id="botaoReset">Reset</button>
+            </form>
+        </div>
+    </main>
+    
+<script src="src/js/script.js"></script>
+</body>
+</html>
