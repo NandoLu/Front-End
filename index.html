@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espaço de Foco Digital</title>
     <link rel="stylesheet" href="./src/CSS/styles.css">
+    <style>
+        #tempo { font-size: 2em; }
+    </style>
 </head>
 <body>
     <aside id="lateral-bar">
@@ -19,26 +22,20 @@
         </nav>
     </aside>
     <main>
-        
         <div id="box">
             <h1 class="title">Home</h1> <!-- Agora acima do form -->
             <form action="">
                 <textarea id="note" rows="1" cols="30" placeholder="Escreva aqui suas anotações."></textarea>
                 <input id="btn-save" type="button" value="salvar">
-                <title>Cronômetro Pomodoro</title>
-                <style>
-                    #tempo { font-size: 2em; }
-                </style>
-            </head>
-            <body>
-                <div id="tempo">00:00</div>
-                <button id="botaoStart">Start</button>
-                <button id="botaoPause">Pause</button>
-                <button id="botaoReset">Reset</button>
+                <div id="cronometro">
+                    <div id="tempo">00:00</div>
+                    <button type="button" id="botaoStart">Start</button>
+                    <button type="button" id="botaoPause">Pause</button>
+                    <button type="button" id="botaoReset">Reset</button>
+                </div>                
             </form>
         </div>
     </main>
-    
 <script src="src/js/script.js"></script>
 </body>
 </html>

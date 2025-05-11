@@ -1,42 +1,52 @@
-let tempoRestante = 1500; // 25 minutos em segundos
-        let intervalId;
+// Seleciona os elementos
+const tempoEl = document.getElementById('tempo');
+const botaoStart = document.getElementById('botaoStart');
+const botaoPause = document.getElementById('botaoPause');
+const botaoReset = document.getElementById('botaoReset');
 
-        const tempoElement = document.getElementById('tempo');
-        const botaoStart = document.getElementById('botaoStart');
-        const botaoPause = document.getElementById('botaoPause');
-        const botaoReset = document.getElementById('botaoReset');
+let segundos = 0;
+let minutos = 0;
+let intervalo = null;
+let pausado = false;
 
-        function atualizarTempo() {
-            const minutos = Math.floor(tempoRestante / 60);
-            const segundos = tempoRestante % 60;
-            tempoElement.textContent = `${String(minutos).padStart(2, '0')}:${String(segundos).padStart(2, '0')}`;
+function atualizarTempo() {
+    const min = minutos.toString().padStart(2, '0');
+    const seg = segundos.toString().padStart(2, '0');
+    tempoEl.textContent = `${min}:${seg}`;
+}
+
+function iniciarCronometro() {
+    if (intervalo) return; // Evita múltiplos intervalos
+
+    intervalo = setInterval(() => {
+        segundos++;
+
+        if (segundos >= 60) {
+            segundos = 0;
+            minutos++;
         }
 
-        botaoStart.addEventListener('click', () => {
-            if (!intervalId) {
-                intervalId = setInterval( () => {
-                    tempoRestante--;
-                    if (tempoRestante <= 0) {
-                        clearInterval(intervalId);
-                        intervalId = null;
-                        alert("Tempo esgotado!"); // Notificação de exemplo
-                        //Adicionar código para o próximo Pomodoro ou pausa aqui
-                    }
-                    atualizarTempo();
-                }, 1000);
-            }
-        });
+        atualizarTempo();
+    }, 1000);
+}
 
-        botaoPause.addEventListener('click', () => {
-            if (intervalId) {
-                clearInterval(intervalId);
-                intervalId = null;
-            }
-        });
+function pausarCronometro() {
+    clearInterval(intervalo);
+    intervalo = null;
+}
 
-        botaoReset.addEventListener('click', () => {
-            clearInterval(intervalId);
-            intervalId = null;
-            tempoRestante = 1500;
-            atualizarTempo();
-        });
+function resetarCronometro() {
+    clearInterval(intervalo);
+    intervalo = null;
+    segundos = 0;
+    minutos = 0;
+    atualizarTempo();
+}
+
+// Eventos
+botaoStart.addEventListener('click', iniciarCronometro);
+botaoPause.addEventListener('click', pausarCronometro);
+botaoReset.addEventListener('click', resetarCronometro);
+
+// Atualiza visualmente ao carregar
+atualizarTempo();
